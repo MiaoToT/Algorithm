@@ -17,16 +17,16 @@ public final class R26RemoveDuplicatesFromSortedArray {
         if (nums.length == 0) {
             return 0;
         }
-        int first = 1;
-        int second = 1;
-        while (second < nums.length) {
-            if (nums[second] != nums[second - 1]) {
-                nums[first] = nums[second];
-                ++first;
+        int left = 1;
+        int right = 1;
+        while (right < nums.length) {
+            if (nums[right] != nums[right - 1]) {
+                nums[left] = nums[right];
+                ++left;
             }
-            ++second;
+            ++right;
         }
-        return first;
+        return left;
     }
 
 }
