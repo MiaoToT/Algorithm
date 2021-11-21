@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
- * @author 应杰
+ * @author 喵粮都输光了
  * @date 2021/11/16
  * @description 23.合并K个升序链表 https://leetcode-cn.com/problems/merge-k-sorted-lists/
  */

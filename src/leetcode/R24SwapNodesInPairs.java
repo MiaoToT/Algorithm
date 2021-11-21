@@ -3,7 +3,7 @@ package leetcode;
 import leetcode.auxiliary.ListNode;
 
 /**
- * @author 应杰
+ * @author 喵粮都输光了
  * @date 2021/11/17
  * @description 24.两两交换链表中的节点 https://leetcode-cn.com/problems/swap-nodes-in-pairs/
  */

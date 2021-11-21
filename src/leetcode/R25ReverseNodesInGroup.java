@@ -3,7 +3,7 @@ package leetcode;
 import leetcode.auxiliary.ListNode;
 
 /**
- * @author 应杰
+ * @author 喵粮都输光了
  * @date 2021/11/21
  * @description 25.K个一组翻转链表 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
  */
