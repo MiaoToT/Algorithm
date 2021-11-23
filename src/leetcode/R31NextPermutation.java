@@ -16,7 +16,7 @@ public final class R31NextPermutation {
      *
      * @param nums 数组
      */
-    public void nextPermutation(int[] nums) {
+    public static void nextPermutation(int[] nums) {
         // 从倒数第二个开始，防止从后往前遍历的时候，下标越界
         int i = nums.length - 2;
         // 从后往前遍历，找到一个不是降序的值。即i的值小于i+1的
