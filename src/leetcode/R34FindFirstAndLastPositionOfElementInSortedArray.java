@@ -61,36 +61,14 @@ public final class R34FindFirstAndLastPositionOfElementInSortedArray {
      */
     public static int[] searchRange2(int[] nums, int target) {
         // 先找 target 第一次出现的位置
-        int leftIndex = search2(nums, target);
+        int leftIndex = R35SearchInsertPosition.searchInsert(nums, target);
         // 再找 比 target 大一点点的值第一次出现的位置
-        int rightIndex = search2(nums, target + 1) - 1;
+        int rightIndex = R35SearchInsertPosition.searchInsert(nums, target + 1) - 1;
         // 如果 left 下标越界了或者 left 对应的值不是 target 说明没找到对应的值
         if (leftIndex > rightIndex || nums[leftIndex] != target) {
             return new int[]{-1, -1};
         }
         return new int[]{leftIndex, rightIndex};
-    }
-
-    /**
-     * 查找 target 第一次出现的位置
-     *
-     * @param nums   数组
-     * @param target target
-     * @return 最终左下标位置，也就是要么是数组长度，要么是找到的第一次出现的位置
-     */
-    private static int search2(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = (left + right) >> 1;
-            // 碰到相同的也要往左边靠是为了找到target最开始的位置，比如8888，target也为8，这样可以找到最开始位置为0
-            if (nums[mid] >= target) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-        }
-        return left;
     }
 
 }
