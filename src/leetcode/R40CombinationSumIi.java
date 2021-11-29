@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @author 应杰
+ * @author 喵粮都输光了
  * @date 2021/11/29
  * @description 40.组合总和II https://leetcode-cn.com/problems/combination-sum-ii/
  */
