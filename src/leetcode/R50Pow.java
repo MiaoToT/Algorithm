@@ -41,7 +41,7 @@ public final class R50Pow {
      */
     public static double myPow2(double x, int n) {
         // 处理次方为负的情况，Integer.MIN_VALUE取反会溢出
-        return n >= 0 ? selfMultiply1(x, n) : 1 / selfMultiply1(x, -(long) n);
+        return n >= 0 ? selfMultiply2(x, n) : 1 / selfMultiply2(x, -(long) n);
     }
 
     private static double selfMultiply2(double x, long n) {
