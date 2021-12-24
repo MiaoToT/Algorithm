@@ -40,15 +40,16 @@ public final class R45JumpGameIi {
      */
     public static int jump2(int[] nums) {
         int steps = 0;
-        int pos = 0;
+        int rightMost = 0;
+        // end维护的是比如3,2,1,2,4，一次3能到达的下标为3，当i到达3的时候，end就记录0到3之间的下标下一跳能跳到的最远的下标位置
         int end = 0;
         // 因为最后必定能到达最后的位置，所以不需要遍历最后的位置
         for (int i = 0; i < nums.length - 1; ++i) {
-            // 维护能跳到的最大下标位置
-            pos = Math.max(pos, i + nums[i]);
+            // 维护i下标能跳到的最大下标位置
+            rightMost = Math.max(rightMost, i + nums[i]);
             // end记录某次能跳到的最大下标位置，到达的时候就把end更新为该值，并增加一次步数。例如第一个数的end一定是0，它的最远距离肯定是它的值
             if (i == end) {
-                end = pos;
+                end = rightMost;
                 ++steps;
             }
         }
