@@ -18,7 +18,7 @@ public final class R56MergeIntervals {
         for (int[] interval : intervals) {
             int leftPoint = interval[0];
             int rightPoint = interval[1];
-            if (result.size() == 0 || result.get(result.size() - 1)[1] < rightPoint) {
+            if (result.size() == 0 || result.get(result.size() - 1)[1] < leftPoint) {
                 result.add(new int[]{leftPoint, rightPoint});
             } else {
                 result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], rightPoint);
