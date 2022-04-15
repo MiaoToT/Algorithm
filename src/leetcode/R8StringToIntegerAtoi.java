@@ -17,12 +17,12 @@ public final class R8StringToIntegerAtoi {
      */
     public static int myAtoi1(String s) {
         int result = 0;
-        s = s.trim();
+        s = s.strip();
         if (s.length() == 0) {
-            return 0;
+            return result;
         }
         if (!Character.isDigit(s.charAt(0)) && s.charAt(0) != '-' && s.charAt(0) != '+') {
-            return 0;
+            return result;
         }
         boolean isMinus = s.charAt(0) == '-';
         // 不是数字直接跳过从1开始
@@ -64,6 +64,7 @@ public final class R8StringToIntegerAtoi {
         public boolean isMinus = false;
         public int result = 0;
         private String state = "start";
+        // 0：空格，1：+-符号，2：数字，3：非数字
         private final Map<String, String[]> table = Map.of(
                 "start", new String[]{"start", "signed", "in_number", "end"},
                 "signed", new String[]{"end", "end", "in_number", "end"},
