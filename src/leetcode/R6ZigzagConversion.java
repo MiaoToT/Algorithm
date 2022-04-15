@@ -33,4 +33,5 @@ public final class R6ZigzagConversion {
         store.forEach(result::append);
         return result.toString();
     }
+
 }
