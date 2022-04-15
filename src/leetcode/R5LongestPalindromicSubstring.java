@@ -80,7 +80,7 @@ public final class R5LongestPalindromicSubstring {
         int start = 0, end = 0;
         // 按照长度对字符串进行遍历，因为状态机的回文判断长度3的回文需要知道长度为2的是否为回文，例如i...j，那么i和j相等我要知道i-1和j+1是否相等，不断类推
         for (int len = 2; len <= s.length(); ++len) {
-            // 枚举左边界，当left为最大时候，right肯定为最大，因为dp的表格智慧记录右上角的三角形，left=right也就是对角线上的数值已经被初始化过了
+            // 枚举左边界，当left为最大时候，right肯定为最大，因为dp的表格只会记录右上角的三角形，left=right也就是对角线上的数值已经被初始化过了
             for (int left = 0; left < s.length() - 1; ++left) {
                 // 由 左边界left 和 字符串长度len 可以确定右边界
                 int right = len + left - 1;
@@ -93,7 +93,7 @@ public final class R5LongestPalindromicSubstring {
                     dp[left][right] = false;
                 } else {
                     // 相等的话则需要判断 left+1和right-1 是否相等，也就是取dp状态机中的值是否为true
-                    // 此处 right - left < 3 完整公式为 (right - 1) - (left + 1) + 1 < 2，计算的是去掉首尾字母吼的字符串是否为回文，
+                    // 此处 right - left < 3 完整公式为 (right - 1) - (left + 1) + 1 < 2，计算的是去掉首尾字母中的字符串是否为回文，
                     // 这里长度小于2，不用检查回文，直接设置为true，因为自身(长度为1)一定是回文的，否则进行检查
                     if (right - left < 3) {
                         dp[left][right] = true;
@@ -124,9 +124,9 @@ public final class R5LongestPalindromicSubstring {
      * minLeft          mirror        center        i          maxRight
      * （i和mirror关于center对称；maxRight和minLeft关于center对称；center是maxRight对应的回文中心的下标；用不到minLeft）
      * <p>
-     * 通过推到可以得出两个大类：
-     * 情况1： i >= maxRight，例如刚开始的i为0和1的位置，只能进行中心扩散
-     * 情况2： i < maxRight，有三小类：可以合并成min(maxRight-i, p[mirror])，然后进行扩散
+     * 通过推导可以得出两个大类：
+     * 情况1： i > maxRight，例如刚开始的i为0和1的位置，只能进行中心扩散
+     * 情况2： i <= maxRight，有三小类：可以合并成min(maxRight-i, p[mirror])，然后进行扩散
      * ①、p[mirror] < maxRight - i 时，p[i]=p[mirror]
      * ②、p[mirror] == maxRight - i 时，p[i]至少等于maxRight-i，需要从maxRight进行中心扩散
      * ③、p[mirror] > maxRight - i 时，p[i]=maxRight-i
@@ -151,7 +151,7 @@ public final class R5LongestPalindromicSubstring {
                 // 情况一：直接当前位置扩散
                 currentArmLen = expand(s, i, i);
             } else {
-                // 情况二：获取i关于center的对成点mirror，获取mirror的臂长，最后在这个臂长外进行扩散（因为臂长内都已经是回文的了）
+                // 情况二：获取i关于center的对称点mirror，获取mirror的臂长，最后在这个臂长外进行扩散（因为臂长内都已经是回文的了）
                 int mirror = center * 2 - i;
                 // 获取确定是回文字符串的臂长
                 currentArmLen = Math.min(maxRight - i, armLen.get(mirror));
