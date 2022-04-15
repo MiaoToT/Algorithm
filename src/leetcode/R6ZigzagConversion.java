@@ -1,6 +1,6 @@
 package leetcode;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,11 +11,10 @@ import java.util.List;
 public final class R6ZigzagConversion {
 
     public static String convert(String s, int numRows) {
-        if (numRows == 1 || s.length() < numRows) {
+        if (numRows == 1 || s.length() <= numRows) {
             return s;
         }
-        StringBuilder result = new StringBuilder();
-        List<StringBuilder> store = new LinkedList<>();
+        List<StringBuilder> store = new ArrayList<>();
         for (int i = 0; i < numRows; ++i) {
             store.add(new StringBuilder());
         }
@@ -30,9 +29,8 @@ public final class R6ZigzagConversion {
             // 下加，上减
             storeIndex += downFlag ? 1 : -1;
         }
-        for (StringBuilder str : store) {
-            result.append(str);
-        }
+        StringBuilder result = new StringBuilder();
+        store.forEach(result::append);
         return result.toString();
     }
 }
